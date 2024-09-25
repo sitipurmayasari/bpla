@@ -13,7 +13,7 @@ Route::group(['middleware' => ['auth:sanctum','verified']], function () {
         return view('pages/utility/404');
     });
 
-    Route::get('/home', Dashboards::class)->name('dashboard');
+    // Route::get('/home', Dashboards::class)->name('dashboard');
     Route::get('/home', Dashboards::class)->name('home');
    
 });
