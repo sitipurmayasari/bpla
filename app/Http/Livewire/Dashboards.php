@@ -24,6 +24,7 @@ class Dashboards extends Component
         $this->user = auth()->user();
         $this->user_id = $this->user->id;
         $this->dates = date('Y-m-d');
+        $this->time_start = date('H:i');
         $this->option_labory = Labory::all();
         $this->role = auth()->user()->role;
     }
@@ -40,7 +41,6 @@ class Dashboards extends Component
         $this->can_submit = false;
         $scan = explode('/qR/', $scan)[1];
         $scan = explode('/inventaris', $scan)[0];
-        // dd($id);
         try {
             $id = Crypt::decryptString($scan);
             $inv = Inventaris::where('id',$id)->first();
@@ -59,6 +59,7 @@ class Dashboards extends Component
                 if ($bpla) {
                     $this->bpla_id = $bpla->id;
                     $this->time_start = $bpla->time_start;
+                    $this->time_end = date('H:i');
                     $this->activity = $bpla->activity;
                     $this->description = $bpla->description;
                     $this->labory_id = $bpla->labory_id;
